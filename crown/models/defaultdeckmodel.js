@@ -1,7 +1,7 @@
 const dbconfig = require('../config/dbconfig');
 
 module.exports = (sequelize, DataTypes) => {
-    const exp = sequelize.define('expCounts', {
+    const Defaultdeck = sequelize.define('defaultdecks', {
         id: {
             type: DataTypes.TEXT,
             autoincrement: true,
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         user_id: {
             type: DataTypes.INTEGER,
         },
-        expcount: {
+        deckid: {
             type: DataTypes.INTEGER,
         }
     },
@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     }
 );
 
-return exp
+return Defaultdeck
 
 };
+
+

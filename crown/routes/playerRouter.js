@@ -9,35 +9,43 @@ const router = require('express').Router()
 
 router.get('/leaderboard',Usercontroller.leaderboard)
 
+router.get('/deck',Usercontroller.getdeck)
+
+router.put('/updatedeck',Usercontroller.updatedeck)
+
+router.put('/updatedefaultdeck',Usercontroller.updatedefaultdeck)
+
 router.post('/adduser',Usercontroller.addUser)
+
+router.get('/cardname',Usercontroller.getCardName)
 
 router.get('/alluser',Usercontroller.getAllUser)
 
-router.get('/:user_id',Usercontroller.getOneUser)
+router.get('/user',Usercontroller.getOneUser)
 
-router.put('/:user_id',Usercontroller.updateUser)
+router.put('/updateuser',Usercontroller.updateUser)
 
-router.delete('/:user_id',Usercontroller.deleteUser)
+router.delete('/deleteuser',Usercontroller.deleteUser)
 
 router.post('/addcrown',Crowncontroller.addCrown)
 
-router.put('/crown/:user_id',Crowncontroller.updateCrown)
+router.put('/updatecrown',Crowncontroller.updateCrown)
 
 router.post('/addcrowncoin',Crowncoincontroller.addCrownCoin)
 
-router.put('/crowncoin/:user_id',Crowncoincontroller.updateCrownCoin)
+router.put('/updatecrowncoin',Crowncoincontroller.updateCrownCoin)
 
 router.post('/addcpg',Cpgcontroller.addCpg)
 
-router.put('/cpg/:user_id',Cpgcontroller.updateCpg)
+router.put('/updatecpg',Cpgcontroller.updateCpg)
 
 router.post('/addexp',Expcontroller.addExp)
 
-router.put('/exp/:user_id',Expcontroller.updateExp)
+router.put('/updateexp',Expcontroller.updateExp)
 
 router.post('/addcdet',Carddetcontroller.addCarddet)
 
-router.put('/carddet/:user_id',Carddetcontroller.updateCarddet)
+router.put('/updatecarddet',Carddetcontroller.updateCarddet)
 
 
 module.exports = router;

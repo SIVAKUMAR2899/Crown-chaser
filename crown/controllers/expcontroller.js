@@ -12,7 +12,7 @@ const addExp = async (req, res) => {
     // console.log(expone);
 
     if (!expone) {
-        let Exps = await Exp.create({ id: shortid, user_id: req.body.user_id, expCount: req.body.expCount });
+        let Exps = await Exp.create({ id: shortid, user_id: req.body.user_id, expcount: req.body.expcount });
         if (Exps) {
             res.status(200).json({
                 code: res.statusCode,

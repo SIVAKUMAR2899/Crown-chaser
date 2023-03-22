@@ -25,10 +25,12 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
-
 db.users = require('./usermodel')(sequelize, DataTypes)
+db.decks = require('./deckmodel')(sequelize, DataTypes)
+db.defaultdecks = require('./defaultdeckmodel')(sequelize, DataTypes)
 db.crownCounts = require('./crownmodel')(sequelize, DataTypes)
 db.expCounts = require('./expmodel')(sequelize, DataTypes)
+db.cardnames = require('./cardnamemodel')(sequelize, DataTypes)
 db.cardDetails = require('./carddetailmodel')(sequelize, DataTypes)
 db.crownCoins = require('./crowncoinmodel')(sequelize, DataTypes)
 db.cpgs = require('./cpgmodel')(sequelize, DataTypes)
