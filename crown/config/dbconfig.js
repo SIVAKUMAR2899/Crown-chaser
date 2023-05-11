@@ -1,11 +1,18 @@
 var mysql = require('mysql');
 
 module.exports = {
-    HOST :"ns13-777.999servers.com",
-    DB:" recinfotceh_rec_crown",
+    HOST :"192.84.190.235",
+    DB:"recinfotceh_crownchaser",
     USER:"recinfotceh_crown",
-    PASSWORD:"[PQ$b,NdVB40",
+    PASSWORD:"P$#L?P}nrfS0",
     Port:"3306",
-    dialect:"mysql"
+    dialect:"mysql",
+
+    pool:{
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
     
 };
