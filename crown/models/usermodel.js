@@ -3,7 +3,7 @@ const dbconfig = require('../config/dbconfig');
 module.exports = (sequelize, DataTypes) => {
     const Player = sequelize.define('users', {
         user_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.TEXT,
             primaryKey: true
         },
         name: {

@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use("recinfotech.com", router);
+app.use("/", router);
 
 app.use('/api/v1/users', router)
 

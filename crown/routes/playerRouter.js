@@ -17,6 +17,8 @@ router.put('/updatedefaultdeck',Usercontroller.updatedefaultdeck)
 
 router.post('/adduser',Usercontroller.addUser)
 
+router.post('/login',Usercontroller.login)
+
 router.get('/cardname',Usercontroller.getCardName)
 
 router.get('/alluser',Usercontroller.getAllUser)

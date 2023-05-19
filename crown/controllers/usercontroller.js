@@ -20,8 +20,10 @@ var short_id = require('shortid');
 
 const addUser = async (req, res) => {
     const salt = genSaltSync(10);
+    var shortid =short_id.generate();
     const body = req.body;
     body.password = hashSync(req.body.password, salt);
+    body.user_id = shortid;
     //  console.log(body.password);
     
     const users = await Player.create(body);
@@ -55,14 +57,50 @@ const addUser = async (req, res) => {
     }
     console.log(deck);
 
-    var shortid =short_id.generate();
-    let deckfile =await Deckss.create({id:shortid,user_id:uuid,deck_1:deck,deck_2:deck,deck_3:deck,deck_4:deck,deck_5:deck});
+    var dfid =short_id.generate();
+    let deckfile =await Deckss.create({id:dfid,user_id:uuid,deck_1:deck,deck_2:deck,deck_3:deck,deck_4:deck,deck_5:deck});
 
     let defaults =  0;
     console.log(defaults);
-    let dedeck =await Defaultdeck.create({id:shortid,user_id:uuid,deckid:defaults});
+    var ddid =short_id.generate();
+    let dedeck =await Defaultdeck.create({id:ddid,user_id:uuid,deckid:defaults});
     console.log(dedeck);
 
+}
+
+// 2.login
+
+const login = async (req,res) => {
+    const { email,password } = req.body;
+    let user = await Player.findOne({ where : { email : email}});
+    if(!user){
+        return res.json({
+            success : 0,
+            message : "invalid email"
+        });
+    }
+    let userid = user.user_id;
+    // console.log(userid);
+    
+    // let current = new Date();
+    // let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+    // let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+    // let dateTime = cDate + ' ' + cTime;
+    // console.log(dateTime);
+
+    const result = compareSync(password,user.password);
+    if(result){
+        return res.json({
+            code:1,
+            message:"login success"
+        });
+    }else{
+            return res.json({
+                code : 0,
+                message : "Invalid password",
+
+            });
+    }  
 }
 
 //2.get all users
@@ -273,6 +311,7 @@ const updatedefaultdeck = async (req, res) => {
 
 module.exports = {
     addUser,
+    login,
     getAllUser,
     getOneUser,
     updateUser,
