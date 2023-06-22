@@ -80,13 +80,6 @@ const login = async (req,res) => {
         });
     }
     let userid = user.user_id;
-    // console.log(userid);
-    
-    // let current = new Date();
-    // let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-    // let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
-    // let dateTime = cDate + ' ' + cTime;
-    // console.log(dateTime);
 
     const result = compareSync(password,user.password);
     if(result){
@@ -176,6 +169,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     let user_id = req.body.user_id
     await Deckss.destroy({ where: { user_id: user_id } })
+    await Defaultdeck.destroy({ where: { user_id: user_id } })
     await users.destroy({ where: { user_id: user_id } })
     res.status(200).json({
         code: res.statusCode,
